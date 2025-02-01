@@ -9,10 +9,8 @@ class RefLinks:
     def register_or_create_tag(self, tag: str):
         doc = self.collection.find_one({"tag": tag})
         if doc:
-            print("док есть")
             self.__register_tag(tag)
         else:
-            print("дока нет")
             self.__create_new_tag(tag)
 
     def __create_new_tag(self, tag):
