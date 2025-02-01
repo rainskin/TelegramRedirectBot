@@ -21,8 +21,7 @@ async def _(msg: types.Message, command: CommandObject):
 
     if args:
         ref_links.register_or_create_tag(args)
-    else:
-        ref_links.register_or_create_tag("tg_bot")
+
     users.add(full_name, username, user_id)
 
     if welcome_text:
@@ -40,6 +39,7 @@ async def _(msg: types.Message):
     if not users.is_new(user_id):
         return
 
+    ref_links.register_or_create_tag("tg_bot")
     users.add(full_name, username, user_id)
 
     if welcome_text:
