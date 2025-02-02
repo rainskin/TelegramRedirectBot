@@ -17,3 +17,9 @@ class Service:
     def get_welcome_text(self) -> str | None:
         doc = self.collection.find_one({'welcome_text': True})
         return doc['text'] if doc else None
+
+    def is_user_registration_enabled(self) -> bool | None:
+        # need create this doc in the database manually
+
+        doc = self.collection.find_one({'main_settings': True})
+        return doc['enable_user_registration'] if doc else None

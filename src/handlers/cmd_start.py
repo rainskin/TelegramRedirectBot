@@ -22,7 +22,8 @@ async def _(msg: types.Message, command: CommandObject):
     if args:
         ref_links.register_or_create_tag(args)
 
-    users.add(full_name, username, user_id)
+    if service.is_user_registration_enabled():
+        users.add(full_name, username, user_id)
 
     if welcome_text:
         await msg.answer(welcome_text)
@@ -40,7 +41,9 @@ async def _(msg: types.Message):
         return
 
     ref_links.register_or_create_tag("tg_bot")
-    users.add(full_name, username, user_id)
+
+    if service.is_user_registration_enabled():
+        users.add(full_name, username, user_id)
 
     if welcome_text:
         await msg.answer(welcome_text)
